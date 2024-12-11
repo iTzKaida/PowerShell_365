@@ -1,7 +1,7 @@
 # Microsoft 365 Verwaltungsskript
 
 # Skriptinformationen
-$ScriptVersion = "0.2.5"
+$ScriptVersion = "0.2.5-alpha"
 $ScriptCreator = "iTzKaida"
 $ReleaseDate = "2024-12-11"
 $GitHubRepo = "https://github.com/iTzKaida/PowerShell_365"
