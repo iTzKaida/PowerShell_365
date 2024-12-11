@@ -1,9 +1,10 @@
 # Microsoft 365 Verwaltungsskript
 
 # Skriptinformationen
-$ScriptVersion = "0.1.0"
-$ScriptCreator = "PNDRA"
+$ScriptVersion = "0.1.5"
+$ScriptCreator = "iTzKaida"
 $ReleaseDate = "2024-12-11"
+$GitHubRepo = "https://github.com/iTzKaida/PowerShell_365"
 
 Write-Host "=================================" -ForegroundColor Cyan
 Write-Host "   Microsoft 365 Verwaltungsskript   " -ForegroundColor Yellow
@@ -11,6 +12,7 @@ Write-Host "=================================" -ForegroundColor Cyan
 Write-Host "Version: $ScriptVersion" -ForegroundColor White
 Write-Host "Erstellt von: $ScriptCreator" -ForegroundColor White
 Write-Host "Release-Datum: $ReleaseDate" -ForegroundColor White
+Write-Host "GitHub-Repo: $GitHubRepo" -ForegroundColor White
 Write-Host "=================================" -ForegroundColor Cyan
 
 # Sicherstellen, dass das benötigte Modul installiert ist
@@ -42,7 +44,7 @@ function Show-SubMenu {
 function Check-GitHubUpdates {
     Write-Host "Prüfe auf Updates auf GitHub..." -ForegroundColor Cyan
     try {
-        $response = Invoke-WebRequest -Uri "https://api.github.com/repos/IHR_USERNAME/IHR_REPOSITORY/releases/latest" -UseBasicParsing
+        $response = Invoke-WebRequest -Uri "https://api.github.com/repos/iTzKaida/PowerShell_365/releases/latest" -UseBasicParsing
         $release = $response.Content | ConvertFrom-Json
         Write-Host "Die neueste Version ist: $($release.tag_name)" -ForegroundColor Green
         Write-Host "Details: $($release.html_url)" -ForegroundColor White
@@ -58,7 +60,7 @@ function Login-M365 {
     Show-SubMenu
     $subExit = $false
     while (-not $subExit) {
-        $subChoice = Read-Host ([char]0x0042 + "itte w" + [char]0x00E4 + "hlen Sie eine Option")
+        $subChoice = Read-Host "Bitte wählen Sie eine Option"
 
         switch ($subChoice) {
             "1" {
@@ -103,7 +105,7 @@ function Logout-M365 {
 $exit = $false
 while (-not $exit) {
     Show-MainMenu
-    $choice = Read-Host ([char]0x0042 + "itte w" + [char]0x00E4 + "hlen Sie eine Option")
+    $choice = Read-Host "Bitte wählen Sie eine Option"
 
     switch ($choice) {
         "1" {
