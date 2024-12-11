@@ -1,19 +1,24 @@
 # Microsoft 365 Verwaltungsskript
 
 # Skriptinformationen
-$ScriptVersion = "0.1.5"
+$ScriptVersion = "0.2.5"
 $ScriptCreator = "iTzKaida"
 $ReleaseDate = "2024-12-11"
 $GitHubRepo = "https://github.com/iTzKaida/PowerShell_365"
 
-Write-Host "=================================" -ForegroundColor Cyan
-Write-Host "   Microsoft 365 Verwaltungsskript   " -ForegroundColor Yellow
-Write-Host "=================================" -ForegroundColor Cyan
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
+
+Write-Host "=========================================================" -ForegroundColor Red
+Write-Host "              Microsoft 365 Verwaltungsskript            " -ForegroundColor Yellow
+Write-Host "=========================================================" -ForegroundColor Red
 Write-Host "Version: $ScriptVersion" -ForegroundColor White
 Write-Host "Erstellt von: $ScriptCreator" -ForegroundColor White
 Write-Host "Release-Datum: $ReleaseDate" -ForegroundColor White
 Write-Host "GitHub-Repo: $GitHubRepo" -ForegroundColor White
-Write-Host "=================================" -ForegroundColor Cyan
+Write-Host "==========================================================" -ForegroundColor Red
+Write-Host "" 
+Write-Host "" 
 
 # Sicherstellen, dass das benötigte Modul installiert ist
 if (!(Get-Module -ListAvailable -Name "ExchangeOnlineManagement")) {
@@ -49,7 +54,7 @@ function Check-GitHubUpdates {
         Write-Host "Die neueste Version ist: $($release.tag_name)" -ForegroundColor Green
         Write-Host "Details: $($release.html_url)" -ForegroundColor White
     } catch {
-        Write-Host "Konnte keine Informationen abrufen. Bitte überprüfen Sie Ihre Internetverbindung oder die GitHub-URL." -ForegroundColor Red
+        Write-Host "Fehler beim Abrufen der Informationen: $($_.Exception.Message)" -ForegroundColor Red
     }
 }
 
